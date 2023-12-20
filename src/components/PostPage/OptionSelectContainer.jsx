@@ -18,8 +18,17 @@ const OptionSelectContainer = ({
   handleItemClick,
   handleSetImageArray,
 }) => {
+  if (optionArray.length === 0) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="x-[100%] h-auto grid grid-cols-2 gap-3 mx-auto sm:grid-cols-4  sm:x-[720px] md:x-[720px]">
+      {selectOption === 'image' && (
+        <AddUserImageButton
+          handleItemClick={handleItemClick}
+          handleSetImageArray={handleSetImageArray}
+        />
+      )}
       {optionArray.map((option, index) => (
         <div key={index}>
           {selectOption === 'color' ? (
@@ -37,12 +46,6 @@ const OptionSelectContainer = ({
           )}
         </div>
       ))}
-      {selectOption === 'image' && (
-        <AddUserImageButton
-          handleItemClick={handleItemClick}
-          handleSetImageArray={handleSetImageArray}
-        />
-      )}
     </div>
   );
 };

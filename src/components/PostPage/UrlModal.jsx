@@ -24,9 +24,9 @@ export const UrlModal = ({ handleModalChange }) => {
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
-    inputValue
-      ? (setUrlInputValue(inputValue), setIsValidUrl(validateUrlFormat(inputValue)))
-      : setIsValidUrl(false);
+
+    setUrlInputValue(inputValue);
+    setIsValidUrl(validateUrlFormat(inputValue));
   };
 
   return (
@@ -39,21 +39,20 @@ export const UrlModal = ({ handleModalChange }) => {
         }
       }}
     >
-      <div className="bg-gradient-to-r to-purple-200 w-[350px] h-[250px] p-7 rounded-xl from-red-100 via-purple-300">
+      <div className="bg-white border-gray-300 border-2 w-[350px] h-[250px] p-7 rounded-xl">
         <div className="flex flex-col">
-          <p className="text-lg animate-bounce font-bold">URL 입력하기 </p>
+          <p className="text-xl text-center font-bold">URL 입력하기 </p>
           <div className="h-32">
             <input
               type="text"
               className={`w-full p-4 mt-3 border-2 rounded-xl ${
                 isValidUrl
-                  ? 'border-white focus:border-purple-400 focus:border-2'
+                  ? 'border-gray-300 focus:border-purple-400 focus:border-2'
                   : 'border-red-500'
               } focus:outline-none`}
               placeholder="URL을 입력해주세요"
               value={urlInputValue}
               onChange={handleInputChange}
-              onBlur={handleInputChange}
             />
             {isValidUrl === false && (
               <p className="text-red-500 text-sm mt-1">
@@ -71,12 +70,6 @@ export const UrlModal = ({ handleModalChange }) => {
             }`}
           >
             등록하기
-          </button>
-          <button
-            onClick={() => handleModalChange(false, null)}
-            className={`py-2 px-6  text-xl text-white rounded-xl bg-purple-500 hover:bg-orange-300 hover:text-black`}
-          >
-            취소하기
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import MessageCardContents from './MessageCardContents';
 import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
+import MessageLoading from './MessageLoading';
 
 const RecipientMenu = lazy(() => import('../RecipientMenu/RecipientMenu'));
 
@@ -10,6 +11,7 @@ function MessagePage() {
   const [messages, setMessages] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasNext, setHasNext] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
   const observerRef = useRef(null);
@@ -28,6 +30,7 @@ function MessagePage() {
   useEffect(() => {
     const getRollingMessages = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           `https://rolling-api.vercel.app/2-5/recipients/${id}/messages/?limit=${LIMIT}&offset=${offset}`
         );
@@ -41,6 +44,8 @@ function MessagePage() {
         setHasNext(next);
       } catch (error) {
         alert(error);
+      } finally {
+        setLoading(false);
       }
     };
     getRollingMessages();
@@ -88,7 +93,9 @@ function MessagePage() {
         <RecipientMenu recipient={recipient} />
       </Suspense>
       <MessageCardContents recipient={recipient} messages={messages} postId={id} />
-      <div id="observer-element" ref={observerRef}></div>
+
+      <div ref={observerRef}></div>
+      {loading && <MessageLoading />}
     </>
   );
 }

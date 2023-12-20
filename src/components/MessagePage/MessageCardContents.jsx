@@ -93,7 +93,10 @@ function MessageCardContents({ recipient, messages, postId }) {
 
             <button
               onClick={() => setShowConfirmModal(true)}
-              className="sm:w-full sm:fixed sm:left-0 sm:bottom-6 hover:bg-purple-700 lg:static lg:w-32 px-6 py-3.5 bg-purple-600 rounded-xl justify-center items-center gap-2.5 inline-flex text-center text-white text-lg font-bold font-['Pretendard'] leading-7"
+              className={`${
+                !clickedMessageIds.length ? 'cursor-not-allowed' : ''
+              } sm:w-full sm:fixed sm:left-0 sm:bottom-6 hover:bg-purple-700 lg:static lg:w-32 px-6 py-3.5 bg-purple-600 rounded-xl justify-center items-center gap-2.5 inline-flex text-center text-white text-lg font-bold font-['Pretendard'] leading-7`}
+              disabled={!clickedMessageIds.length}
             >
               저장하기
             </button>

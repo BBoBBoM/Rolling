@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { postFormDataToApi } from './PostMessageApi';
+import { postFormDataToApi } from './PostMessageAPI';
 import SenderName from './SenderName';
 import MessageProfileImage from './MessageProfileImage';
 import Relationships from './Relationships';

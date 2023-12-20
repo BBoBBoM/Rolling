@@ -10,7 +10,7 @@ export const ToggleButton = ({ onClick, isActive, content }) => {
   return (
     <div
       onClick={onClick}
-      className={`w-[50%] p-[7px] px-[16px] border-2 border-gray-200 cursor-pointer rounded-md ${
+      className={`flex flex-col justify-center text-center w-[50%] p-[7px] px-[16px]  cursor-pointer rounded-md ${
         isActive ? 'bg-white-500 border-2 border-purple-500 text-purple-500' : ''
       }`}
     >
