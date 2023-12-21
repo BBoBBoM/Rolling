@@ -21,7 +21,7 @@ function MessageCard({
   return (
     <>
       <div
-        className={`flex flex-col gap-5 max-w-sm h-[280px] px-6 py-7 shadow-[0px_2px_12px_0px_rgba(0,0,0,0.08)] rounded-2xl bg-white ${
+        className={`flex justify-between flex-col max-w-sm h-[280px] p-6 shadow-[0px_2px_12px_0px_rgba(0,0,0,0.08)] rounded-2xl bg-white ${
           markedForDeletion ? 'opacity-70' : 0
         }
         key={message.id}`}
@@ -34,7 +34,11 @@ function MessageCard({
               alt="프로필 이미지"
             />
             <div className="ms-5">
-              <p className={`${MESSAGE_FONT[message.font]}`}>
+              <p
+                className={`whitespace-nowrap w-[230px] text-ellipsis overflow-hidden ${
+                  MESSAGE_FONT[message.font]
+                }`}
+              >
                 From. <b>{message.sender}</b>
               </p>
               <span

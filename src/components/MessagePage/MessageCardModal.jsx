@@ -6,15 +6,15 @@ import DOMPurify from 'dompurify';
 function MessageCardModal({ message, handleCloseModal }) {
   return (
     <>
-      <div className="sm:w-full flex flex-col gap-4 fixed -translate-x-2/4 -translate-y-2/4 left-2/4 top-2/4 z-[9999] md:w-[600px] h-[476px] p-10 rounded-2xl bg-white">
-        <div className="flex justify-between items-center h-14 border-b border-b-[#eee] h-">
-          <div className="flex">
+      <div className="sm:w-full flex flex-col fixed -translate-x-2/4 -translate-y-2/4 left-2/4 top-2/4 z-[9999] md:w-[600px] h-[476px] p-10 rounded-2xl bg-white">
+        <div className="flex justify-between items-center pb-5 h-auto border-b border-b-[#eee]">
+          <div className="flex items-center">
             <img
               className="w-14 h-14 rounded-[100px] border border-[#eee]"
               src={message.profileImageURL}
               alt="프로필 이미지"
             />
-            <div className="ms-5">
+            <div className="mx-5 w-[340px]">
               <p className={`mb-2 ${MESSAGE_FONT[message.font]}`}>
                 From. <b>{message.sender}</b>
               </p>
