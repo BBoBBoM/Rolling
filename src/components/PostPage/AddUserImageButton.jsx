@@ -18,6 +18,7 @@ export const AddUserImageButton = ({ handleItemClick, handleSetImageArray }) => 
     if (selectedFile) {
       try {
         setIsLoading(true);
+        console.log(selectedFile);
         const imageUrl = await uploadImageIBB(selectedFile);
         if (imageUrl) {
           handleItemClick('image', imageUrl);
